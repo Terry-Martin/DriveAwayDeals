@@ -20,6 +20,6 @@ from django.urls import path, include
 from customer_info import views as customer_info_views
 
 urlpatterns = [
-    path('', customer_info_views.index, name='index'),
+    path('test/', customer_info_views.index, name='index'),
     path('admin/', admin.site.urls),
 ]
