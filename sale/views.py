@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Staff, Transaction, CustomerDetail
 
 # Create your views here.
-def employee_sale(request):
-    return HttpResponse("Please work!")
+class PostList(generic.ListView):
+   queryset = CustomerDetail.objects.all()
+   template_name = "post_list.html"

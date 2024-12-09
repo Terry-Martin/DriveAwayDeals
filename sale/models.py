@@ -19,7 +19,8 @@ class Transaction(models.Model):
     car_registration = models.TextField
     price = models.DecimalField(max_digits= 9, decimal_places=2)
     date_completed = models.DateTimeField
-    #updated_by =  models.ForeignKey(
+    #
+    # updated_by =  models.ForeignKey(
         #Staff, on_delete = models.RESTRICT, related_name="staff_id"
     #)
     
