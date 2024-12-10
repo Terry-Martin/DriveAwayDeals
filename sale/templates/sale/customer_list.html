@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of list</title>
+</head>
+
+<body>
+    <h1>Customer List</h1>
+    <ul>
+        {% for customer in customers %}
+        <li>{{ customer.customer_id }}</li>
+        <li>{{ customer}}</li>
+        <li>{{ customer.created_on}}</li>
+        <li>{{ customer.first_name}}</li>
+        <li>{{ customer.second_name}}</li>
+        <li>{{ customer.email}}</li>
+        <li>{{ customer.updated_by}}</li>
+        <li>************</li>
+        {% endfor %}
+    </ul>
+
+</body>
+
+</html>

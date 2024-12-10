@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of list</title>
+</head>
+
+<body>
+
+    <h1>Staff List</h1>
+    <ul>
+        {% for staff in staffs %}
+        <li>{{ staff.staff_id }}</li>
+        <li>{{ staff.first_name}}</li>
+        <li>{{ staff.second_name}}</li>
+        <li>{{ staff.email}}</li>
+        <li>{{ staff.hire_date}}</li>
+        <li>{{ staff.position}}</li>
+        <li>{{ staff}}</li>
+        <li>************</li>
+        {% endfor %}
+    </ul>
+
+</body>
+
+</html>

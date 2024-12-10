@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of list</title>
+</head>
+
+<body>
+
+    <h1>Transaction List</h1>
+    <ul>
+        {% for transaction in transactions %}
+        <li>{{ transaction.transaction_number }}</li>
+        <li>{{ transaction.transaction_type }}</li>
+        <li>{{ transaction.car_registration}}</li>
+        <li>{{ transaction.price }}</li>
+        <li>{{ transaction.date_completed }}</li>
+        <li>{{ transaction.customer_id}}</li>
+        <li>{{ transaction}}</li>
+        <li>************</li>
+        {% endfor %}
+    </ul>
+
+</body>
+
+</html>
