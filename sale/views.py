@@ -6,7 +6,7 @@ from .models import Staff, Transaction, Customer
 def homepage(request):
     #return render(request, 'sale/homepage.html')
     # customers = Customer.objects.all()
-    return render(request, 'sale/homepage.html')
+    return render(request, 'sale/index.html')
 
 
 def customer_list(request):
