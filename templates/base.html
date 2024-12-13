@@ -1,6 +1,6 @@
 {% load static %}
 
-{% url 'index' as index_url %}
+{% url 'home' as home_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="icon.png" alt="Logo" width="30" height="30" class="me-2">
-                My Website
+                DriveAwayDeals
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,11 +46,13 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container my-5">
-        <h1>Welcome to My Website</h1>
-        <p>This is a simple webpage with a Bootstrap navbar and footer.</p>
-    </div>
+    <main class="flex-shrink-0 main-bg">
+
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+
+    </main>
 
     <!-- Footer -->
     <footer class="bg-primary text-white py-4">
