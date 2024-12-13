@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Staff, Transaction, Customer
 
@@ -24,5 +24,3 @@ def staff_list(request):
 def transaction_list(request):
    transactions = Transaction.objects.all()
    return render(request, 'sale/transaction_list.html', {'transactions': transactions})
-
-
