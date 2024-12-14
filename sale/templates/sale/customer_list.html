@@ -14,6 +14,7 @@
     <li>{{ customer.email}}</li>
     <li>{{ customer.updated_by}}</li>
     <li>************</li>
+    <a href="{% url 'customer_detail' customer.customer_id %}">Click Me now</a>
     {% endfor %}
 </ul>
 {% endblock %}

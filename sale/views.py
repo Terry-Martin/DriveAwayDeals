@@ -24,3 +24,16 @@ def staff_list(request):
 def transaction_list(request):
    transactions = Transaction.objects.all()
    return render(request, 'sale/transaction_list.html', {'transactions': transactions})
+
+
+
+def customer_detail(request, customer_id):
+
+    queryset = Customer.objects.all()
+    customer = get_object_or_404(queryset, customer_id=customer_id)
+
+    return render(
+        request,
+        "sale/customer_detail.html",
+        {"customer": customer},
+    )
