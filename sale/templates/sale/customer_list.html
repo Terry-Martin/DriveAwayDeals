@@ -4,6 +4,9 @@
 
 {% block content %}
 <h1>Customer List</h1>
+
+<a href="{% url 'customer-create' %}" class="btn btn-primary mb-3">Create New Item</a>
+
 <ul>
     {% for customer in customers %}
     <li>{{ customer.customer_id }}</li>
@@ -15,6 +18,10 @@
     <li>{{ customer.updated_by}}</li>
     <li>************</li>
     <a href="{% url 'customer_detail' customer.customer_id %}">Click Me now</a>
+
+    <li><a href="{% url 'customer-edit' item.pk %}" class="btn btn-warning btn-sm">Edit</a></li>
+    <li><a href="{% url 'customer-delete' item.pk %}" class="btn btn-danger btn-sm">Delete</a></li>
+
     {% endfor %}
 </ul>
 {% endblock %}
