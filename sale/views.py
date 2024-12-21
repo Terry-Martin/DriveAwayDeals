@@ -47,14 +47,14 @@ def customer_create(request):
 
 
 def customer_edit(request, pk):
-    customer = get_object_or_404(Item, pk=pk)
+    customer = get_object_or_404(Customer, pk=pk)
     if request.method == 'POST':
-        form = CustomerForm(request.POST, instance=item)
+        form = CustomerForm(request.POST, instance=customer)
         if form.is_valid():
             form.save()
             return redirect('customer_list')
     else:
-        form = CustomerFormForm(instance=item)
+        form = CustomerForm(instance=customer)
     return render(request, 'sale/customer_form.html', {'form': form, 'action': 'Edit'})
 
 
