@@ -24,18 +24,14 @@ class Customer(models.Model):
     email = models.EmailField(max_length=60)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_by = models.ForeignKey(
-        Staff, on_delete = models.RESTRICT, related_name="updated_by_who"
+        Staff, on_delete = models.SET_NULL, null=True, related_name="updated_by_who"
+
     )
 
     def __str__(self):
         return self.first_name + " " + self.second_name + "(" + str(self.customer_id) + ")"
 
     
-   # transaction_number = models.ForeignKey(
-      #  Transaction, on_delete = models.RESTRICT, related_name="transaction_number"
-    #)
-
-
 TYPE_OF_TRANSACTION = (
     ('sale','SALE'),
     ('purchase', 'PURCHASE'),
@@ -47,18 +43,11 @@ class Transaction(models.Model):
     price = models.DecimalField(max_digits= 9, decimal_places=2)
     date_completed = models.DateTimeField
     customer_ID = models.ForeignKey(
-        Customer, on_delete = models.RESTRICT, related_name="customer_id_transaction"
+        Customer, on_delete = models.SET_NULL, null=True, related_name="customer_id_transaction"
     )
 
     def __str__(self):
         return str(self.transaction_number) + " " + self.transaction_type #+ " " + Customer.first_name
-    #
-    # updated_by =  models.ForeignKey(
-        #Staff, on_delete = models.RESTRICT, related_name="staff_id"
-    #)
-
-
-    from django.db import models
 
 class Item(models.Model):
     name = models.CharField(max_length=100)
