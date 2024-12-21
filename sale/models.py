@@ -47,7 +47,7 @@ class Transaction(models.Model):
     )
 
     def __str__(self):
-        return str(self.transaction_number) + " " + self.transaction_type #+ " " + Customer.first_name
+        return str(self.transaction_number) + " " + self.transaction_type 
 
 class Item(models.Model):
     name = models.CharField(max_length=100)

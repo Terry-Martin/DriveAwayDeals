@@ -3,7 +3,32 @@
 {% block title %}Transactions{% endblock %}
 
 {% block content %}
-<h1>Transaction List</h1>
+<h1>Transactions</h1>
+
+
+<table>
+    <tr>
+        <td>Number</td>
+        <td>Type</td>
+        <td>Car Reg</td>
+        <td>Price</td>
+        <td>Customer</td>
+    </tr>
+    {% for transaction in transactions %}
+    <tr>
+        <td>{{ transaction.transaction_number }}</td>
+        <td>{{ transaction.transaction_type }}</td>
+        <td>{{ transaction.car_registration}}</td>
+        <td>{{ transaction.price }}</td>
+        <td>{{ transaction.customer_ID}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+
+<!--
 <ul>
     {% for transaction in transactions %}
     <li>{{ transaction.transaction_number }}</li>
@@ -15,5 +40,4 @@
     <li>{{ transaction}}</li>
     <li>************</li>
     {% endfor %}
-</ul>
-{% endblock %}
+</ul> -->
