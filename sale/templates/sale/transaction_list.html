@@ -5,14 +5,16 @@
 {% block content %}
 <h1>Transactions</h1>
 
+<a href="{% url 'transaction-create' %}" class="btn btn-primary mb-3">New Transaction</a>
 
 <table>
     <tr>
-        <td>Number</td>
-        <td>Type</td>
-        <td>Car Reg</td>
-        <td>Price</td>
-        <td>Customer</td>
+        <th>Number</th>
+        <th>Type</th>
+        <th>Car Reg</th>
+        <th>Price</th>
+        <th>Customer</th>
+        <th>Transaction Number</th>
     </tr>
     {% for transaction in transactions %}
     <tr>
@@ -21,7 +23,12 @@
         <td>{{ transaction.car_registration}}</td>
         <td>{{ transaction.price }}</td>
         <td>{{ transaction.customer_ID}}</td>
+        <td><a href="{% url 'transaction_detail' transaction.transaction_number %}">{{ transaction.transaction_number }}</a></td>
     </tr>
+    
+
+    
+
     {% endfor %}
 </table>
 
@@ -40,4 +47,8 @@
     <li>{{ transaction}}</li>
     <li>************</li>
     {% endfor %}
-</ul> -->
+</ul> 
+    <tr>
+        <td><a href="{% url 'transaction_detail' transaction.transaction_number %}">{{ transaction.transaction_number }}</a></td>
+    </tr> 
+    -->

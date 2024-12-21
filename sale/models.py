@@ -25,7 +25,6 @@ class Customer(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_by = models.ForeignKey(
         Staff, on_delete = models.SET_NULL, null=True, related_name="updated_by_who"
-
     )
 
     def __str__(self):
@@ -49,12 +48,6 @@ class Transaction(models.Model):
     def __str__(self):
         return str(self.transaction_number) + " " + self.transaction_type 
 
-class Item(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-
-    def __str__(self):
-        return self.name
 
 
 
