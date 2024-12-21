@@ -14,16 +14,15 @@
         <th>Car Reg</th>
         <th>Price</th>
         <th>Customer</th>
-        <th>Transaction Number</th>
     </tr>
     {% for transaction in transactions %}
     <tr>
-        <td>{{ transaction.transaction_number }}</td>
+        <td><a href="{% url 'transaction_detail' transaction.transaction_number %}">{{ transaction.transaction_number }}</a></td>
         <td>{{ transaction.transaction_type }}</td>
         <td>{{ transaction.car_registration}}</td>
         <td>{{ transaction.price }}</td>
         <td>{{ transaction.customer_ID}}</td>
-        <td><a href="{% url 'transaction_detail' transaction.transaction_number %}">{{ transaction.transaction_number }}</a></td>
+        
     </tr>
     
 

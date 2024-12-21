@@ -145,5 +145,16 @@ def transaction_delete(request, pk):
     return render(request, 'sale/transaction_confirm_delete.html', {'transaction': transaction})
 
 
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'register.html', {'form': form})
+
+
 
 
