@@ -14,10 +14,6 @@ def customer_list(request):
    customers = Customer.objects.all()
    return render(request, 'sale/customer_list.html', {'customers': customers})
 
-   #queryset = CustomerDetail.objects.all()
-   #template_name = "sale/index.html"
-   #paginate_by = 6
-
 def staff_list(request):
    staffs = Staff.objects.all()
    return render(request, 'sale/staff_list.html', {'staffs': staffs})
@@ -61,12 +57,22 @@ def customer_edit(request, pk):
         form = CustomerFormForm(instance=item)
     return render(request, 'sale/customer_form.html', {'form': form, 'action': 'Edit'})
 
+
+
 def customer_delete(request, pk):
-    customer = get_object_or_404(Item, pk=pk)
+    customer = get_object_or_404(Customer, pk=pk)
     if request.method == 'POST':
         customer.delete()
-        return redirect('customer-list')
+        return redirect('customer_list')
     return render(request, 'sale/customer_confirm_delete.html', {'customer': customer})
+
+
+def item_delete(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    if request.method == 'POST':
+        item.delete()
+        return redirect('item-list')
+    return render(request, 'sale/item_confirm_delete.html', {'item': item})
 
 
 
@@ -97,9 +103,4 @@ def item_edit(request, pk):
         form = ItemForm(instance=item)
     return render(request, 'sale/item_form.html', {'form': form, 'action': 'Edit'})
 
-def item_delete(request, pk):
-    item = get_object_or_404(Item, pk=pk)
-    if request.method == 'POST':
-        item.delete()
-        return redirect('item-list')
-    return render(request, 'sale/item_confirm_delete.html', {'item': item})
+

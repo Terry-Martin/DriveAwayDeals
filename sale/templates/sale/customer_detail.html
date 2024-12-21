@@ -2,19 +2,26 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-<h1>Feck</h1>
+<h1>Customer Detail</h1>
 
 <li>{{ customer.first_name}}</li>
 <li>{{ customer.second_name}}</li>
-
 <li>{{ customer.customer_id }}</li>
 <li>{{ customer}}</li>
 <li>{{ customer.created_on}}</li>
 <li>{{ customer.email}}</li>
 <li>{{ customer.updated_by}}</li>
-<a href="{% url 'item-edit' item.pk %}" class="btn btn-warning btn-sm">Edit</a>
+
+<div>
+    <li><a href="{% url 'customer-delete' customer.pk %}" class="btn btn-danger btn-sm">Delete</a></li>
+    
+</div>
+
 <div>
     <img src="{% static 'images/testimg.jpg' %}" alt="placeholder">
 </div>
 
 {% endblock content %}
+
+<!-- <a href="{% url 'item-edit' item.pk %}" class="btn btn-warning btn-sm">Edit</a> 
+<li><a href="{% url 'customer-edit' item.pk %}" class="btn btn-warning btn-sm">Edit</a> -->

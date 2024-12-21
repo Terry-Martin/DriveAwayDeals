@@ -5,24 +5,20 @@
 {% block content %}
 <h1>Customer List</h1>
 
-<a href="{% url 'customer-create' %}" class="btn btn-primary mb-3">Create New Item</a>
 
-<ul>
+<a href="{% url 'customer_list' %}" class="btn btn-primary mb-3">Create New Item</a>
+
+<table>
+    <tr>
+        <th>Customer ID</th>
+        <th>Customer Name</th>
+    </tr>
     {% for customer in customers %}
-    <li>{{ customer.customer_id }}</li>
-    <li>{{ customer}}</li>
-    <li>{{ customer.created_on}}</li>
-    <li>{{ customer.first_name}}</li>
-    <li>{{ customer.second_name}}</li>
-    <li>{{ customer.email}}</li>
-    <li>{{ customer.updated_by}}</li>
-    <li>************</li>
-    <a href="{% url 'customer_detail' customer.customer_id %}">Click Me now</a>
-
-    <li><a href="{% url 'customer-edit' item.pk %}" class="btn btn-warning btn-sm">Edit</a></li>
-    <li><a href="{% url 'customer-delete' item.pk %}" class="btn btn-danger btn-sm">Delete</a></li>
-
+    <tr>
+        <td><a href="{% url 'customer_detail' customer.customer_id %}">{{ customer.customer_id }}</a></td>
+        <td><a href="{% url 'customer_detail' customer.customer_id %}">{{ customer.first_name }}  {{customer.second_name}}</a></td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
+    
 {% endblock %}
-
