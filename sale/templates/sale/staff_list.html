@@ -1,19 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}Transactions{% endblock %}
+{% block title %}Staff List{% endblock %}
 
 {% block content %}
 <h1>Staff List</h1>
-<ul>
+
+
+<a href="{% url 'staff-create' %}" class="btn btn-primary mb-3">Add New Staff</a>
+
+<table>
+    <tr>
+        <th>Staff ID</th>
+        <th>Staff Name</th>
+    </tr>
     {% for staff in staffs %}
-    <li>{{ staff.staff_id }}</li>
-    <li>{{ staff.first_name}}</li>
-    <li>{{ staff.second_name}}</li>
-    <li>{{ staff.email}}</li>
-    <li>{{ staff.hire_date}}</li>
-    <li>{{ staff.position}}</li>
-    <li>{{ staff}}</li>
-    <li>************</li>
+    <tr>
+        <td><a href="{% url 'staff_detail' staff.staff_id %}">{{ staff.staff_id }}</a></td>
+        <td><a href="{% url 'staff_detail' staff.staff_id %}">{{ staff.first_name }}  {{staff.second_name}}</a></td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
+    
 {% endblock %}

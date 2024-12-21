@@ -1,12 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
-from .models import Staff, Transaction, Customer, Item
-from .forms import ItemForm, CustomerForm
+from .models import Staff, Transaction, Customer
+from .forms import CustomerForm, StaffForm
 
 # Create your views here.
 def homepage(request):
-    #return render(request, 'sale/homepage.html')
-    # customers = Customer.objects.all()
     return render(request, 'sale/index.html')
 
 
@@ -14,26 +12,16 @@ def customer_list(request):
    customers = Customer.objects.all()
    return render(request, 'sale/customer_list.html', {'customers': customers})
 
-def staff_list(request):
-   staffs = Staff.objects.all()
-   return render(request, 'sale/staff_list.html', {'staffs': staffs})
 
-def transaction_list(request):
-   transactions = Transaction.objects.all()
-   return render(request, 'sale/transaction_list.html', {'transactions': transactions})
-
-
-
-def customer_detail(request, customer_id):
-
+def customer_detail(request, pk):
    queryset = Customer.objects.all()
-   customer = get_object_or_404(queryset, customer_id=customer_id)
+   customer = get_object_or_404(queryset, pk=pk)
 
    return render(
       request,
       "sale/customer_detail.html",
-      {"customer": customer},
-   )
+      {"customer": customer},)
+
 
 def customer_create(request):
     if request.method == 'POST':
@@ -57,8 +45,6 @@ def customer_edit(request, pk):
         form = CustomerForm(instance=customer)
     return render(request, 'sale/customer_form.html', {'form': form, 'action': 'Edit'})
 
-
-
 def customer_delete(request, pk):
     customer = get_object_or_404(Customer, pk=pk)
     if request.method == 'POST':
@@ -67,40 +53,56 @@ def customer_delete(request, pk):
     return render(request, 'sale/customer_confirm_delete.html', {'customer': customer})
 
 
-def item_delete(request, pk):
-    item = get_object_or_404(Item, pk=pk)
+def staff_list(request):
+   staffs = Staff.objects.all()
+   return render(request, 'sale/staff_list.html', {'staffs': staffs})
+
+
+def staff_detail(request, pk):
+   queryset = Staff.objects.all()
+   staff = get_object_or_404(queryset, pk=pk)
+
+   return render(
+      request,
+      "sale/staff_detail.html",
+      {"staff": staff},)
+
+
+def staff_create(request):
     if request.method == 'POST':
-        item.delete()
-        return redirect('item-list')
-    return render(request, 'sale/item_confirm_delete.html', {'item': item})
-
-
-
-
-
-def item_list(request):
-    items = Item.objects.all()
-    return render(request, 'sale/item_list.html', {'items': items})
-
-def item_create(request):
-    if request.method == 'POST':
-        form = ItemForm(request.POST)
+        form = StaffForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('item-list')
+            return redirect('staff_list')
     else:
-        form = ItemForm()
-    return render(request, 'sale/item_form.html', {'form': form, 'action': 'Create'})
+        form = StaffForm()
+    return render(request, 'sale/staff_form.html', {'form': form, 'action': 'Create'})
 
-def item_edit(request, pk):
-    item = get_object_or_404(Item, pk=pk)
+
+def staff_edit(request, pk):
+    staff = get_object_or_404(Staff, pk=pk)
     if request.method == 'POST':
-        form = ItemForm(request.POST, instance=item)
+        form = StaffForm(request.POST, instance=staff)
         if form.is_valid():
             form.save()
-            return redirect('item-list')
+            return redirect('staff_list')
     else:
-        form = ItemForm(instance=item)
-    return render(request, 'sale/item_form.html', {'form': form, 'action': 'Edit'})
+        form = StaffForm(instance=staff)
+    return render(request, 'sale/staff_form.html', {'form': form, 'action': 'Edit'})
+
+
+def staff_delete(request, pk):
+    staff = get_object_or_404(Staff, pk=pk)
+    if request.method == 'POST':
+        staff.delete()
+        return redirect('staff_list')
+    return render(request, 'sale/staff_confirm_delete.html', {'staff': staff})
+
+
+def transaction_list(request):
+   transactions = Transaction.objects.all()
+   return render(request, 'sale/transaction_list.html', {'transactions': transactions})
+
+
 
 

@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<h1>Staff Detail</h1>
+
+<li>{{ staff.first_name}}</li>
+
+<div>
+    <li><a href="{% url 'staff-delete' staff.pk %}" class="btn btn-danger btn-sm">Delete</a></li>
+    <li><a href="{% url 'staff-edit' staff.pk %}" class="btn btn-warning btn-sm">Edit</a></li>
+    
+</div>
+
+<div>
+    <img src="{% static 'images/testimg.jpg' %}" alt="placeholder">
+</div>
+
+{% endblock content %}
