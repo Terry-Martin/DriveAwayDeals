@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 STAFF_POSITION = (
-    ('salesperson','SALESPERSON'),
+    ('salesperson','SALESPERSON'), 
     ('manager', 'MANAGER'),
 )
+
 class Staff(models.Model):
     staff_id = models.AutoField(primary_key=True)  # auto-generated primary key
     hire_date = models.DateTimeField(auto_now_add=True)
@@ -16,6 +17,7 @@ class Staff(models.Model):
 
     def __str__(self):
         return self.first_name + " " + self.second_name + "(" + str(self.staff_id) + ") - " + self.position
+
 
 class Customer(models.Model):
     customer_id = models.AutoField(primary_key=True)  # auto-generated primary key
@@ -35,6 +37,8 @@ TYPE_OF_TRANSACTION = (
     ('sale','SALE'),
     ('purchase', 'PURCHASE'),
 )
+
+
 class Transaction(models.Model):
     transaction_number = models.AutoField(primary_key=True)  # auto-generated primary key
     transaction_type = models.CharField(max_length=8, choices=TYPE_OF_TRANSACTION, default='sale')
@@ -46,9 +50,4 @@ class Transaction(models.Model):
     )
 
     def __str__(self):
-        return str(self.transaction_number) + " " + self.transaction_type 
-
-
-
-
-    
+        return str(self.transaction_number) + " " + self.transaction_type
