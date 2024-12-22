@@ -4,22 +4,26 @@
 
 <h1>Customer Detail</h1>
 
-<li>{{ customer.first_name}}</li>
-<li>{{ customer.second_name}}</li>
-<li>{{ customer.customer_id }}</li>
-<li>{{ customer}}</li>
-<li>{{ customer.created_on}}</li>
-<li>{{ customer.email}}</li>
-<li>{{ customer.updated_by}}</li>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Second Name</th>
+        <th>Email</th>
+        <th>Updated By</th>
+    </tr>
+    <tr>
+        <td>{{ customer.customer_id }}</td>
+        <td>{{ customer.first_name}}</td>
+        <td>{{ customer.second_name}}</td>
+        <td>{{ customer.email}}</td>
+        <td>{{ customer.updated_by}}</td>
+    </tr>
+</table>
 
 <div>
-    <li><a href="{% url 'customer-delete' customer.pk %}" class="btn btn-danger btn-sm">Delete</a></li>
-    <li><a href="{% url 'customer-edit' customer.pk %}" class="btn btn-warning btn-sm">Edit</a></li>
-    
-</div>
-
-<div>
-    <img src="{% static 'images/testimg.jpg' %}" alt="placeholder">
+    <a href="{% url 'customer-delete' customer.pk %}" class="btn btn-danger btn-sm">Delete</a>
+    <a href="{% url 'customer-edit' customer.pk %}" class="btn btn-warning btn-sm">Edit</a>
 </div>
 
 {% endblock content %}

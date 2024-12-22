@@ -3,17 +3,32 @@
 {% load crispy_forms_tags %}
 
 <h1>Transaction Detail</h1>
+<table>
+    <tr>
+        <th>Number</th>
+        <th>Type</th>
+        <th>Car Reg</th>
+        <th>Price</th>
+        <th>Customer</th>
+    </tr>
+   
+    <tr>
+        <td>{{ transaction.transaction_number}}</td>
+        <td>{{ transaction.transaction_type}}</td>
+        <td>{{ transaction.car_registration}}</td>
+        <td>{{ transaction.price}}</td>
+        <td>{{ transaction.customer_ID}}</td>
+    </tr>
 
-<li>{{ transaction.transaction_number}}</li>
+</table>
+
 
 <div>
-    <li><a href="{% url 'transaction-delete' transaction.pk %}" class="btn btn-danger btn-sm">Delete</a></li>
-    <li><a href="{% url 'transaction-edit' transaction.pk %}" class="btn btn-warning btn-sm">Edit</a></li>
-    
+    <a href="{% url 'transaction-delete' transaction.pk %}" class="btn btn-danger btn-sm">Delete</a>
+    <a href="{% url 'transaction-edit' transaction.pk %}" class="btn btn-warning btn-sm">Edit</a>
+
 </div>
 
-<div>
-    <img src="{% static 'images/testimg.jpg' %}" alt="placeholder">
-</div>
+
 
 {% endblock content %}

@@ -4,16 +4,26 @@
 
 <h1>Staff Detail</h1>
 
-<li>{{ staff.first_name}}</li>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Second Name</th>
+        <th>Email</th>
+        <th>Position</th>
+    </tr>
+    <tr>
+        <td>{{ staff.staff_id}}</td>
+        <td>{{ staff.first_name}}</td>
+        <td>{{ staff.second_name}}</td>
+        <td>{{ staff.email}}</td>
+        <td>{{ staff.position}}</td>
+    </tr>
+</table>
 
 <div>
-    <li><a href="{% url 'staff-delete' staff.pk %}" class="btn btn-danger btn-sm">Delete</a></li>
-    <li><a href="{% url 'staff-edit' staff.pk %}" class="btn btn-warning btn-sm">Edit</a></li>
-    
-</div>
-
-<div>
-    <img src="{% static 'images/testimg.jpg' %}" alt="placeholder">
+    <a href="{% url 'staff-delete' staff.pk %}" class="btn btn-danger btn-sm">Delete</a>
+    <a href="{% url 'staff-edit' staff.pk %}" class="btn btn-warning btn-sm">Edit</a>
 </div>
 
 {% endblock content %}

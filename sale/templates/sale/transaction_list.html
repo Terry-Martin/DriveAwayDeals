@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
 {% block title %}Transactions{% endblock %}
-
 {% block content %}
 <h1>Transactions</h1>
 
@@ -12,42 +10,16 @@
         <th>Number</th>
         <th>Type</th>
         <th>Car Reg</th>
-        <th>Price</th>
-        <th>Customer</th>
     </tr>
     {% for transaction in transactions %}
     <tr>
         <td><a href="{% url 'transaction_detail' transaction.transaction_number %}">{{ transaction.transaction_number }}</a></td>
         <td>{{ transaction.transaction_type }}</td>
-        <td>{{ transaction.car_registration}}</td>
-        <td>{{ transaction.price }}</td>
-        <td>{{ transaction.customer_ID}}</td>
-        
+        <td>{{ transaction.car_registration}}</td>        
     </tr>
     
-
-    
-
     {% endfor %}
 </table>
 
 {% endblock %}
 
-
-<!--
-<ul>
-    {% for transaction in transactions %}
-    <li>{{ transaction.transaction_number }}</li>
-    <li>{{ transaction.transaction_type }}</li>
-    <li>{{ transaction.car_registration}}</li>
-    <li>{{ transaction.price }}</li>
-    <li>{{ transaction.date_completed }}</li>
-    <li>{{ transaction.customer_id}}</li>
-    <li>{{ transaction}}</li>
-    <li>************</li>
-    {% endfor %}
-</ul> 
-    <tr>
-        <td><a href="{% url 'transaction_detail' transaction.transaction_number %}">{{ transaction.transaction_number }}</a></td>
-    </tr> 
-    -->
