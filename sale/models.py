@@ -7,7 +7,7 @@ STAFF_POSITION = (
     ('manager', 'MANAGER'),
 )
 class Staff(models.Model):
-    staff_id = models.PositiveIntegerField(primary_key=True)
+    staff_id = models.AutoField(primary_key=True)  # auto-generated primary key
     hire_date = models.DateTimeField(auto_now_add=True)
     first_name = models.CharField(max_length=25)
     second_name = models.CharField(max_length=25)
@@ -18,7 +18,7 @@ class Staff(models.Model):
         return self.first_name + " " + self.second_name + "(" + str(self.staff_id) + ") - " + self.position
 
 class Customer(models.Model):
-    customer_id = models.PositiveIntegerField(primary_key=True)
+    customer_id = models.AutoField(primary_key=True)  # auto-generated primary key
     first_name = models.CharField(max_length=25)
     second_name = models.CharField(max_length=25)
     email = models.EmailField(max_length=60)
@@ -36,7 +36,7 @@ TYPE_OF_TRANSACTION = (
     ('purchase', 'PURCHASE'),
 )
 class Transaction(models.Model):
-    transaction_number = models.PositiveIntegerField(primary_key=True)
+    transaction_number = models.AutoField(primary_key=True)  # auto-generated primary key
     transaction_type = models.CharField(max_length=8, choices=TYPE_OF_TRANSACTION, default='sale')
     car_registration = models.CharField(max_length=14)
     price = models.DecimalField(max_digits= 9, decimal_places=2)
